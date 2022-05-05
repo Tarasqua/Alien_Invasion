@@ -9,6 +9,12 @@ from misc import ControlsMisc
 
 class Controls(ControlsMisc):
 
+    def __init__(self):
+        pygame.mixer.init()
+        self.STOPPED_PLAYING = pygame.USEREVENT + 1
+        pygame.mixer.music.set_endevent(self.STOPPED_PLAYING)
+        self.music_counter = 0
+
     def events(self, screen, starship, bullets):
         """Обработка событий."""
         for event in pygame.event.get():
@@ -32,6 +38,17 @@ class Controls(ControlsMisc):
                 # Влево
                 elif event.key == pygame.K_LEFT:
                     starship.move_left = False
+            # Беспрерывное воспроизведение музыки
+            if event.type == self.STOPPED_PLAYING:
+                if self.music_counter < len(self.MAIN_MUSIC_PLAYLIST):
+                    pygame.mixer.music.load(self.MAIN_MUSIC_PLAYLIST[self.music_counter])
+                    pygame.mixer.music.play()
+                    self.music_counter += 1
+                elif self.music_counter == len(self.MAIN_MUSIC_PLAYLIST):
+                    self.music_counter = 0
+                    pygame.mixer.music.load(self.MAIN_MUSIC_PLAYLIST[self.music_counter])
+                    pygame.mixer.music.play()
+                    self.music_counter += 1
 
     def update(self, screen, starship, bullets, aliens, score, selected_background):
         """Обновление экрана."""
@@ -45,6 +62,7 @@ class Controls(ControlsMisc):
 
     def defeat(self, screen, aliens, bullets, selected_background):
         """Проигрыш."""
+        pygame.mixer.music.pause()
         pygame.mixer.Sound.play(pygame.mixer.Sound(self.DEFEAT_SOUND)).set_volume(self.ADDITIONAL_VOLUME)
         aliens.empty()
         bullets.empty()

@@ -1,3 +1,7 @@
+import os
+from auxiliary_functions import create_playlist
+
+
 class AlienMisc:
     ALIEN_IMAGE = 'graphics/images/alien.png'
 
@@ -39,7 +43,7 @@ class ScoresMisc:
     STARSHIP_LEFT_MARGIN = 20
 
 
-class DifficultyMenu:
+class DifficultyMenuMisc:
     DIFFICULTY_LEVEL = 'graphics/images/main_menu/difficulty_level.png'
     DIFFICULTY_LEVEL_1 = 'graphics/images/main_menu/difficulty_level_1_selected.png'
     DIFFICULTY_LEVEL_2 = 'graphics/images/main_menu/difficulty_level_2_selected.png'
@@ -48,7 +52,7 @@ class DifficultyMenu:
     DIFFICULTY_LEVEL_5 = 'graphics/images/main_menu/difficulty_level_5_selected.png'
 
 
-class BackgroundMenu:
+class BackgroundMenuMisc:
     BACKGROUND_MENU = 'graphics/images/main_menu/background_menu.png'
     BACKGROUND_MENU_1 = 'graphics/images/main_menu/background_menu_1_selected.png'
     BACKGROUND_MENU_2 = 'graphics/images/main_menu/background_menu_2_selected.png'
@@ -56,11 +60,12 @@ class BackgroundMenu:
     BACKGROUND_MENU_4 = 'graphics/images/main_menu/background_menu_4_selected.png'
 
 
-class MainMenu:
+class MainMenuMisc:
     WALLPAPER_MENU = 'graphics/images/main_menu/wallpaper.png'
 
 
-class BaseMisc(BackgroundMenu, DifficultyMenu, MainMenu):
+class BaseMisc(BackgroundMenuMisc, DifficultyMenuMisc, MainMenuMisc):
+
     GAME_TITLE = 'ALIEN INVASION'
     DISPLAY_SIZE = (1200, 800)
     STARSHIP_SIZE = (60, 57)
@@ -70,10 +75,12 @@ class BaseMisc(BackgroundMenu, DifficultyMenu, MainMenu):
                          3: 'graphics/images/backgrounds/background_death.png',
                          4: 'graphics/images/backgrounds/background_galactus.png'}
     DEFEAT_IMAGE = 'graphics/images/defeat.png'
-    MAIN_MUSIC = 'sounds/right_music.mp3'
+    MAIN_MUSIC_PATH = 'sounds/right_music'
+    MAIN_MUSIC = f'{MAIN_MUSIC_PATH}/{os.listdir(MAIN_MUSIC_PATH)[0]}'
     MAIN_VOLUME = 0.5
     ADDITIONAL_VOLUME = 1
     CHALLENGES_SOUND = 'sounds/challenges.mp3'
+    MAIN_MUSIC_PLAYLIST = create_playlist(MAIN_MUSIC_PATH)
 
 
 class ControlsMisc(BaseMisc, StatsMisc):

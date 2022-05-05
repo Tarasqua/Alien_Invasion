@@ -1,3 +1,4 @@
+import os
 import time
 
 import pygame
@@ -20,15 +21,18 @@ class Base(BaseMisc, StatsMisc):
     controls = Controls()
 
     def __init__(self):
+        # Инициализация
         pygame.init()
         self.screen = pygame.display.set_mode(self.DISPLAY_SIZE)
         pygame.display.set_caption(self.GAME_TITLE)
+        # Музыка
         pygame.mixer.music.load(self.MAIN_MUSIC)
         pygame.mixer.music.set_volume(self.MAIN_VOLUME)
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play()
+        # Отрисовка
+        self.main_menu()
         self.starship = Starship(self.screen)
         self.controls.create_army(screen=self.screen, aliens=self.aliens)
-        self.main_menu()
         self.score = Scores(screen=self.screen, stats=self.stats, text_background=self.background_menu()[1])
 
     def runtime(self, selected_background, difficulty_level):
@@ -101,6 +105,8 @@ class Base(BaseMisc, StatsMisc):
 
     def repeat_game(self):
         """Обновляем счет и жизни и делаем флаг True, чтобы продолжить играть."""
+        pygame.mixer.music.rewind()
+        pygame.mixer.music.play()
         self.stats.starship_left = self.LIVES
         self.score.image_lives()
         self.stats.score = self.SCORE
