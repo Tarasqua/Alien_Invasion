@@ -25,6 +25,8 @@ class Base(BaseMisc, StatsMisc):
         pygame.init()
         self.screen = pygame.display.set_mode(self.DISPLAY_SIZE)
         pygame.display.set_caption(self.GAME_TITLE)
+        game_icon = pygame.image.load(self.GAME_ICON)
+        pygame.display.set_icon(game_icon)
         # Музыка
         pygame.mixer.music.load(self.MAIN_MUSIC)
         pygame.mixer.music.set_volume(self.MAIN_VOLUME)
