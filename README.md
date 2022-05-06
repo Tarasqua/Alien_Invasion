@@ -14,4 +14,6 @@ like `amaizing.mp3` or `challenges.mp3`**, or, if you do want to do that, **don'
 ####Appearance:
 You can also change the environment, the aliens or ship appearance, however, the game may not look as attractive as it 
 was before. So, if you change, **don't change the names!**
+####Highscore
+Your record is stored in the `highscore.txt` file. If you want, you can change it and put at least a million :)
 ###That's all. Enjoy!
