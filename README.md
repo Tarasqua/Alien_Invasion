@@ -2,6 +2,8 @@
 ####Control:
     to the left - navigation key left
     to the right - navigation key right
+    shooting - space
+
     start game - space
     end game - escape
     select background an difficulty level - number keys 1-5
