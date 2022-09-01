@@ -1,5 +1,5 @@
-##Hi! The main functions of the game will be described below.
-####Control:
+## Hi! The main functions of the game will be described below.
+#### Control:
     to the left - navigation key left
     to the right - navigation key right
     shooting - space
@@ -7,7 +7,7 @@
     start game - space
     end game - escape
     select background an difficulty level - number keys 1-5
-####Music:
+#### Music:
 You can change the music that is playing during the game by adding it to the folder `sounds/right_music/`. 
 For the game to run successfully, there must be at least something. **Don't change the music in the folder `sounds/`
 like `amaizing.mp3` or `challenges.mp3`**, or, if you do want to do that, **don't change their names**.
